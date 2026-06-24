@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NURUL HALEEZ | e-Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #e8f5e9;
+            --secondary-color: #15b7b9;
+            --dark-color: #1b5e20;
+            --text-color: #212121;
+            --bg-color: #f9fbf9;
+            --card-bg: #ffffff;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        /* Sticky Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--primary-color);
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        nav .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a5d6a7;
+        }
+
+        /* Hero / Profile Section */
+        #home {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 5rem 2rem 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-container .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .sdg-badge {
+            background-color: #4caf50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Main Sections Layout */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            text-align: center;
+            color: var(--dark-color);
+            margin-bottom: 2rem;
+            position: relative;
+            font-size: 2rem;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 0.5rem auto 0 auto;
+            border-radius: 20px;
+        }
+
+        /* Grid Layouts for Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            background-color: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .reflection-box {
+            background-color: var(--primary-light);
+            padding: 0.8rem;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 4px 4px 0;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* Project Specific Styling */
+        .btn-github {
+            display: inline-block;
+            background-color: #24292e;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-github:hover {
+            background-color: #444;
+        }
+
+        /* Reflection & Journey */
+        .journey-container {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Skills section */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            background-color: var(--primary-light);
+            color: var(--dark-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Resources section */
+        .resources-container {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .resources-container ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            #home {
+                padding: 4rem 1rem 3rem 1rem;
+            }
+            .hero-container h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <header>
+        <nav>
+            <div class="logo">NH e-Portfolio</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#labs">Labs</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#reflection">Reflection</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home / Hero Section -->
+    <section id="home">
+        <div class="hero-container">
+            <h1>NURUL HALEEZ BINTI ABDUL RAHIM</h1>
+            <p class="subtitle">Matric No: A212396 | Programme: TM2213 (Mobile Programming)</p>
+            <p class="subtitle" style="margin-top: -1rem;">Instructor: DR. RIMANIZA</p>
+            <div class="sdg-badge">SDG 15: Life on Land</div>
+            <p class="intro-text">
+                Welcome to my mobile application development portfolio. This platform showcases my structural progress across intensive lab exercises and final project deployments focusing on sustainable technology alignment. Protecting land ecosystems requires smarter data and software orchestration, which drives my technical research.
+            </p>
+        </div>
+    </section>
+
+    <!-- Labs Section -->
+    <section id="labs">
+        <h2>Laboratory Implementations</h2>
+        <div class="grid-container">
+            
+            <!-- Lab 1 -->
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/QM5nC6QHoaE?si=9tT3zdb4bhLE2pVl" title="Lab 1 Video" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 1: User Interface Design</h3>
+                    <p>Building foundational static layouts inside Jetpack Compose using Core UI layouts.</p>
+                    <div class="reflection-box">
+                        Discovered structural optimization rules utilizing Row, Column, and Box scaffolding interfaces. Managing declarative interface parameters proved fundamental to building robust screen designs.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab 2 -->
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Jz47MtpqA9M?si=-3VTQlKD3043cAS1" title="Lab 2 Video" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 2: State & Interaction</h3>
+                    <p>Introducing interactive architectures handling live structural state management.</p>
+                    <div class="reflection-box">
+                        Gained insights regarding tracking state changes using mutability observers. Managing runtime user entries effectively handles real-time visual mutations safely.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab 3 -->
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/UtvvYvUO-PM?si=G6EKqAoFpuN-bvpc" title="Lab 3 Video" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 3: Material Design Components</h3>
+                    <p>Integrating themed components following systemic Google Material 3 guidelines.</p>
+                    <div class="reflection-box">
+                        Learned to implement cards, standard top app bars, and customizable layout themes. Polishing standard layouts considerably improves end-user system presentation standards.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab 4 -->
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/nvTeqAPma5s?si=-cuzodTyortuCvbb" title="Lab 4 Video" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 4: Jetpack Navigation</h3>
+                    <p>Constructing multi-screen navigation routes passing arguments safely between screens.</p>
+                    <div class="reflection-box">
+                        Configured graph controllers routing diverse modular application targets accurately. Passing arguments securely maintains operational data integrity throughout distinct views.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lab 5 -->
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/6tbxRYk0j3k?si=G4a7BZWyKzeCvEpw" title="Lab 5 Video" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Lab 5: Room Local Database</h3>
+                    <p>Configuring structured offline caching databases directly leveraging underlying SQLite engines.</p>
+                    <div class="reflection-box">
+                        Constructed abstract data access object layers and internal local entities. Storing application info offline prevents unexpected connectivity data loss issues reliably.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Core Projects</h2>
+        <div class="grid-container">
+
+            <!-- Project 1 -->
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/EHYaW7AqlRM?si=U2aIbb1Sx9i1-uf6" title="Project 1 Video" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Project 1: AboutGreen App</h3>
+                    <p><strong>Problem Statement:</strong> Users lack simple educational accessibility strategies to monitor regional ecosystem metrics, slowing community conservation action.</p>
+                    <div class="reflection-box">
+                        <strong>Lessons Learned:</strong> Unified declarative UI styling concepts with robust stateful screen architectures. Managed components systematically across varying viewport scales.
+                    </div>
+                    <a href="https://github.com/a212396-sudo/A212396_Dr.Rimaniza_Project1" class="btn-github" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/UM7aqBVh-jo?si=shzobzyI4SyJ_rKE" title="Project 2 Video" allowfullscreen></iframe>
+                </div>
+                <div class="card-content">
+                    <h3>Project 2: AboutGreen Evolution</h3>
+                    <p><strong>Problem Statement:</strong> Disconnected offline ecological mapping fields fail to coordinate sensor metrics and synchronized cloud parameters dynamically.</p>
+                    <div class="reflection-box">
+                        <strong>Lessons Learned:</strong> Established background web services and integrated native Android hardware layers. Successfully engineered local-first architectures that sync smoothly with remote cloud ecosystems.
+                    </div>
+                    <a href="https://github.com/a212396-sudo/A212396_Dr.Rimaniza_Project2" class="btn-github" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Reflection Section -->
+    <section id="reflection">
+        <h2>Reflection & Learning Journey</h2>
+        <div class="journey-container">
+            <p>
+                My trajectory through this course from structural lab tasks towards full ecosystem deployments marked an amazing architectural growth period. Transitioning into declarative UI spaces utilizing Jetpack Compose demanded deep shifts regarding component state lifecycle paradigms. Transitioning local database models seamlessly towards cloud synchronization interfaces gave me confidence in handling real-world runtime environments. This mobile engineering experience has fully equipped me to construct modern, scalable applications.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills & Tech Stack</h2>
+        <div class="skills-list">
+            <span class="skill-tag">Kotlin</span>
+            <span class="skill-tag">Jetpack Compose</span>
+            <span class="skill-tag">Room Database</span>
+            <span class="skill-tag">Retrofit API</span>
+            <span class="skill-tag">Firebase Firestore</span>
+            <span class="skill-tag">Android Sensors</span>
+            <span class="skill-tag">Material Design 3</span>
+            <span class="skill-tag">Git & Version Control</span>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources">
+        <h2>Resources & Acknowledgements</h2>
+        <div class="resources-container">
+            <p style="margin-bottom: 1rem;"><strong>Libraries & Core APIs Utilized:</strong></p>
+            <ul>
+                <li>Google Jetpack Architectural Suite (Compose, Navigation, Lifecycle)</li>
+                <li>Android Room Persistence Layer Library</li>
+                <li>Square Retrofit HTTP Client Tools</li>
+                <li>Firebase Cloud Ecosystem Services</li>
+            </ul>
+            <p style="border-top: 1px solid #eee; padding-top: 1rem; font-style: italic;">
+                <strong>Acknowledgement of AI Assistance:</strong> Generative AI workflows were strategically leveraged to format inline CSS elements, configure clean semantic HTML5 layouts, and streamline structural scaffolding templates for this deployment.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>NURUL HALEEZ BINTI ABDUL RAHIM | Matric: A212396 | © 2026</p>
+    </footer>
+
+</body>
+</html>
